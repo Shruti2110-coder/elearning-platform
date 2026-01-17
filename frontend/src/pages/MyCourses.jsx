@@ -13,7 +13,7 @@ export default function MyCourses() {
       return;
     }
 
-    axios.get("http://localhost:5001/api/enrollments/my", {
+    axios.get(`${import.meta.env.VITE_API_URL}/api/enrollments/my`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then(res => setEnrollments(res.data))
       .catch(err => console.error(err));

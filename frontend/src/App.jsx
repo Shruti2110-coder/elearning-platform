@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+
 import './App.css';
 import Courses from './pages/Courses';
 import Register from './pages/Register';
@@ -19,18 +20,17 @@ function App() {
         <Route
           path="/"
           element={
-            <ProtectRoute>
               <Courses />
-            </ProtectRoute>
+            
           }
         />
 
         <Route
           path="/course/:id"
           element={
-            <ProtectRoute>
+          
               <CourseDetails />
-            </ProtectRoute>
+         
           }
         />
 

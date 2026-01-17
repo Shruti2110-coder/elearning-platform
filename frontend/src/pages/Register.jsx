@@ -14,7 +14,10 @@ export default function Register() {
     setError("");
 
     try {
-      await axios.post("http://localhost:5001/api/auth/register", form);
+       const API = import.meta.env.VITE_API_URL;
+
+await axios.post(`${API}/api/auth/register`, form);
+
       setMessage("✅ Registration successful! Please login.");
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {

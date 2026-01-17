@@ -9,7 +9,7 @@ export default function CourseDetails() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios.get(`http://localhost:5001/api/courses/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/courses/${id}`)
       .then(res => setCourse(res.data))
       .catch(err => console.error(err));
   }, [id]);
@@ -23,7 +23,7 @@ export default function CourseDetails() {
 
     try {
       await axios.post(
-        "http://localhost:5001/api/enrollments",
+        `${import.meta.env.VITE_API_URL}/api/enrollments`,
         { courseId: id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
