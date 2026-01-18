@@ -10,11 +10,21 @@ const router = express.Router();
 //Enroll in courses
 
 router.post("/", protect, async(req, res)=>{
-    const enrollment = await Enrollment.create({
-        student: req.user.id,
-        course: req.body.courseId,
-        completedLessons: [],
-    });
+ const exists = await Enrollment.findOne({
+  student: req.user.id,
+  course: req.body.courseId,
+});
+
+if (exists) {
+  return res.status(400).json({ message: "Already enrolled" });
+}
+
+const enrollment = await Enrollment.create({
+  student: req.user.id,
+  course: req.body.courseId,
+  completedLessons: [],
+});
+
     res.json(enrollment);
 })
 

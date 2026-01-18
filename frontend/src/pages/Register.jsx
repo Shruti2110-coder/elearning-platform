@@ -15,8 +15,8 @@ export default function Register() {
 
     try {
        const API = import.meta.env.VITE_API_URL;
-
-await axios.post(`${API}/api/auth/register`, form);
+        console.log("API URL:", API);
+ await axios.post(`${API}/api/auth/register`, form);
 
       setMessage("✅ Registration successful! Please login.");
       setTimeout(() => navigate("/login"), 1500);
